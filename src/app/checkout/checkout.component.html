@@ -1,0 +1,20 @@
+<h2>Checkout</h2>
+    <div>
+        <label>Your Email:
+            <input [(ngModel)]="order.email" placeholder="email"/>
+        </label>
+        <label>Your Name:
+            <input [(ngModel)]="order.name" placeholder="name"/>
+        </label>
+        <label>Your Address:
+            <input [(ngModel)]="order.address" placeholder="address"/>
+        </label>
+        <label>Your Card Number:
+            <input [(ngModel)]="order.card" placeholder="card number"/>
+        </label>
+    </div>
+
+<a routerLink="/complete">
+    <span class="badge">Confirm</span>
+</a>
+<div><span class="badge" (click)="goBack()">Go Back</span></div>

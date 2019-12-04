@@ -1,0 +1,11 @@
+<h2>My Cart</h2>
+    <div *ngFor="let movie of movies">
+        <div *ngIf="movie.quantity!==0">
+            <span>{{movie.title}}</span> &nbsp; Quantity in cart: {{movie.quantity}} 
+        </div>
+    </div>
+    
+<a routerLink="/checkout">
+    <span class="badge">Go to Checkout</span>
+</a>
+<div><span class="badge" (click)="goBack()">Go Back</span></div>
