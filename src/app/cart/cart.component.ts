@@ -20,17 +20,21 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    for (let movie of this.movies){
-      movie.quantity = parseInt(localStorage.getItem(movie.id.toString()))
-      if (movie.quantity === NaN){
-        movie.quantity = 0;
-      }
-    }
+   
   }
 
   getMovies(): void {
     this.movieService.getMovies()
-        .subscribe(movies => this.movies = movies);
+        .subscribe(movies => {
+          this.movies = movies;
+
+          for (let movie of this.movies){
+            movie.quantity = parseInt(localStorage.getItem(movie.id.toString()))
+            if (isNaN(movie.quantity)){
+              movie.quantity = 0;
+            }
+          }
+        });
   }
 
   goBack(): void{

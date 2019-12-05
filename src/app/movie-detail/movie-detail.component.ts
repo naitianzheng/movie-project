@@ -21,7 +21,7 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getMovie();
     this.movie.quantity = parseInt(localStorage.getItem(this.movie.id.toString()))
-    if (this.movie.quantity === NaN){
+    if (isNaN(this.movie.quantity)){
       this.movie.quantity = 0;
     }
   }
