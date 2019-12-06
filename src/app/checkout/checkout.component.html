@@ -1,9 +1,10 @@
-<!-- <h2>Checkout</h2>
-
-<a routerLink="/complete">
-    <span class="badge">Confirm</span>
-</a>
-<div><span class="badge" (click)="goBack()">Go Back</span></div> -->
+<style>
+    .divider{
+        width:15px;
+        height:auto;
+        display:inline-block;
+    }
+</style>
 
 <div class="container">
     <div [hidden]="submitted">
@@ -92,7 +93,8 @@
 
             <button (click)=goNext() type="submit" class="btn btn-success" [disabled]
             ="!orderForm.form.valid">Submit</button>
-            <button type="submit" class="btn btn-default" (click)="goBack()">Back</button>
+            <div class="divider"></div>
+            <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
 
         </form>
 </div>
