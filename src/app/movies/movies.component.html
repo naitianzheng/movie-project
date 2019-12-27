@@ -1,8 +1,6 @@
 <h2>List of Movies (Click to view details)</h2>
 <ul class = "movies">
-    <li *ngFor="let movie of movies">
-        <a routerLink="/detail/{{movie.id}}">
+    <li *ngFor="let movie of movies" (click)=goNext(movie.id)>
             <span class="badge">{{movie.id}}</span> {{movie.title}}
-        </a>
     </li>
 </ul>

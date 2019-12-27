@@ -1,11 +1,23 @@
+<style>
+    .divider{
+        width:15px;
+        height:auto;
+        display:inline-block;
+    }
+</style>
+
 <h2>My Cart</h2>
     <div *ngFor="let movie of movies">
-        <div *ngIf="movie.quantity!==0">
+        <div *ngIf="movie.quantity">
             <span>{{movie.title}}</span> &nbsp; Quantity in cart: {{movie.quantity}} 
         </div>
     </div>
-    
-<a routerLink="/checkout">
-    <span class="badge">Go to Checkout</span>
-</a>
-<div><span class="badge" (click)="goBack()">Go Back</span></div>
+
+
+<div> 
+    <a routerLink="/checkout">
+        <button type="button" class="btn btn-info">Checkout</button>
+    </a>  
+    <div class="divider"></div>
+    <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+</div>

@@ -1,3 +1,10 @@
+<style>
+    .divider{
+        width:15px;
+        height:auto;
+        display:inline-block;
+    }
+</style>
 <div *ngIf="movie">
 
     <h2>{{movie.title | uppercase}} Details</h2>
@@ -5,14 +12,20 @@
     <div><span>Running Time: </span>{{movie.runningtime}}</div>
     <div><span>Description: </span>{{movie.description}}</div>
 
-    <span class="badge" (click)="addToCart(movie)">Add to cart</span>
-    <span class="badge" (click)="removeAll(movie)">Remove all</span>
+    <div>
+        <button type="button" class="btn btn-info" (click)="addToCart(movie)">Add to cart</button>
+        <div class="divider"></div>
+        <button type="button" class="btn btn-info" (click)="removeAll(movie)">Remove all</button>
+    </div>
 
     <div><span>Quantity in cart: </span>{{movie.quantity}}</div>
 
-    <a routerLink="/cart">
-        <span class="badge">My Cart</span>
-    </a>
-    <div><span class="badge" (click)="goBack()">Go Back</span></div>
+    <div> 
+        <a routerLink="/cart">
+            <button type="button" class="btn btn-info">My Cart</button>
+        </a>  
+        <div class="divider"></div>
+        <button type="button" class="btn btn-info" (click)="goBack()">Back</button>
+    </div>
 
 </div>
