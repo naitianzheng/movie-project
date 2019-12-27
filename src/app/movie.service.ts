@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
-// import { delay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of} from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Movie} from './movie';
-import { MOVIES } from './mock-movies';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-
-  constructor() { }
-
-  getMovies(): Observable<Movie[]> {
-    return of(MOVIES);
-  }
+  constructor(
+    private http: HttpClient
+  ) { }
   
   getMovie(id: number): Observable<Movie>{
-    return of(MOVIES.find(movie => movie.id === id));
+    let url ='http://localhost:8000/api/movie/'+ id;
+    return this.http.get<Movie>(url);
+  }
+  
+  getMovieList(): Observable<Movie[]>{
+    return this.http.get('http://localhost:8000/api/movie')
+        .pipe(map(result=>result['objects']));
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService} from '../movie.service'
 import { Movie } from '../movie';
 
+import { Observable} from 'rxjs';
 import { Router} from '@angular/router';
 import { stringify } from 'querystring';
 
@@ -12,7 +13,7 @@ import { stringify } from 'querystring';
 })
 export class MoviesComponent implements OnInit {
 
-  movies : Movie[];
+  movies: Observable<Movie[]>;
   
   constructor(
     private movieService: MovieService,
@@ -29,7 +30,6 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(): void{
-    this.movieService.getMovies()
-        .subscribe(movies => this.movies = movies);
+    this.movies = this.movieService.getMovieList();
   }
 }

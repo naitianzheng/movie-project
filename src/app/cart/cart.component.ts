@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-
 import { Movie } from "../movie";
 import { MovieService } from "../movie.service";
 
@@ -23,8 +22,8 @@ export class CartComponent implements OnInit {
    
   }
 
-  getMovies(): void {
-    this.movieService.getMovies()
+  getMovies(): void{
+    this.movieService.getMovieList()
         .subscribe(movies => {
           this.movies = movies;
 
