@@ -14,12 +14,12 @@ export class MovieService {
   ) { }
   
   getMovie(id: number): Observable<Movie>{
-    let url ='http://localhost:8000/api/movie/'+ id;
+    let url ='http://localhost:8000/movie/'+ id;
     return this.http.get<Movie>(url);
   }
   
   getMovieList(): Observable<Movie[]>{
-    return this.http.get('http://localhost:8000/api/movie')
-        .pipe(map(result=>result['objects']));
+    return this.http.get<Movie[]>('http://localhost:8000/movie');
+        // .pipe(map(result=>result['objects']));
   }
 }

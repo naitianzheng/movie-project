@@ -20,8 +20,10 @@ export class OrderService {
     private http: HttpClient
   ) { }
 
-  submitOrder(order: Order): Observable<Order>{
-    let url = 'http://localhost:8000/api/order/'
-    return this.http.post<Order>(url, order, httpOptions)
+  submitOrder(order: Order): Observable<any>{
+    let url = 'http://localhost:8000/order/'
+    let neworder = JSON.stringify(order);
+    console.log(neworder);
+    return this.http.post<any>(url, neworder, httpOptions)
   }
 }

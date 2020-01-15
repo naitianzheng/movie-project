@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Movie } from "../movie";
 import { MovieService } from "../movie.service";
 
 @Component({
@@ -10,7 +9,8 @@ import { MovieService } from "../movie.service";
 })
 export class CartComponent implements OnInit {
 
-  movies: Movie[];
+  movies: any;
+  total_price: number = 0.00;
 
   constructor(
     private movieService: MovieService,
@@ -28,12 +28,14 @@ export class CartComponent implements OnInit {
           this.movies = movies;
 
           for (let movie of this.movies){
-            movie.quantity = parseInt(localStorage.getItem(movie.id.toString()))
+            movie.quantity = parseInt(localStorage.getItem(movie.id.toString()));
             if (isNaN(movie.quantity)){
               movie.quantity = 0;
             }
+            this.total_price += movie.price*movie.quantity;
           }
         });
+    
   }
 
   goBack(): void{

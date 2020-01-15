@@ -13,7 +13,7 @@ import { stringify } from 'querystring';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: Observable<Movie[]>;
+  movies: any;
   
   constructor(
     private movieService: MovieService,
